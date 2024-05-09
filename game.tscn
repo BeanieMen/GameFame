@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvnhc6dljsu3q"]
+
+[ext_resource type="PackedScene" uid="uid://btb7dyil8vdlj" path="res://title_screen.tscn" id="1_ipabc"]
+
+[sub_resource type="GDScript" id="GDScript_bqssq"]
+script/source = "extends Node
+
+@onready var current_level = $TitleScreen
+
+func _ready() -> void:
+	randomize()
+	current_level.level_changed.connect(switch_scene)
+## Takes filepath to a Scene and replace the current level by a new one.
+
+func switch_scene(level: PackedScene) -> void:
+	var next_level = level.instantiate()
+	current_level.queue_free()
+	current_level = next_level
+	add_child(current_level)
+	current_level.level_changed.connect(switch_scene)
+	
+"
+
+[node name="Game" type="Node"]
+script = SubResource("GDScript_bqssq")
+
+[node name="TitleScreen" parent="." instance=ExtResource("1_ipabc")]

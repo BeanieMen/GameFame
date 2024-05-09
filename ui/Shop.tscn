@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://b17t7x27b7sqq"]
+
+[ext_resource type="Script" path="res://ui/Shop.gd" id="1_2qmxl"]
+[ext_resource type="Texture2D" uid="uid://cijasyvlbxoa6" path="res://assets/sapling.png" id="2_kjs8c"]
+[ext_resource type="Texture2D" uid="uid://b4rbgno5w8dpy" path="res://assets/apple.png" id="3_p5t6t"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_2qmxl")
+
+[node name="Buy" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Buy"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buy/MarginContainer"]
+layout_mode = 2
+
+[node name="AppleSapling" type="Sprite2D" parent="Buy/MarginContainer/VBoxContainer"]
+position = Vector2(130, 152)
+scale = Vector2(0.158333, 0.161667)
+texture = ExtResource("2_kjs8c")
+
+[node name="OakLabel" type="Label" parent="Buy/MarginContainer/VBoxContainer/AppleSapling"]
+offset_left = -486.316
+offset_top = 358.763
+offset_right = 498.684
+offset_bottom = 506.763
+theme_override_font_sizes/font_size = 100
+text = "A simple oak sapling"
+metadata/_edit_group_ = true
+
+[node name="Buy" type="Button" parent="Buy/MarginContainer/VBoxContainer/AppleSapling"]
+offset_left = -366.0
+offset_top = 563.0
+offset_right = 348.0
+offset_bottom = 730.0
+theme_override_font_sizes/font_size = 100
+text = "Buy: $10"
+
+[node name="Owner" type="Label" parent="Buy/MarginContainer/VBoxContainer/AppleSapling"]
+offset_left = -252.632
+offset_top = 822.679
+offset_right = 259.368
+offset_bottom = 1002.68
+theme_override_font_sizes/font_size = 100
+text = "Owned: 0"
+
+[node name="Apple" type="Sprite2D" parent="Buy/MarginContainer/VBoxContainer"]
+position = Vector2(473.438, 141.838)
+scale = Vector2(0.185227, 0.174773)
+texture = ExtResource("3_p5t6t")
+
+[node name="OakLabel" type="Label" parent="Buy/MarginContainer/VBoxContainer/Apple"]
+offset_left = -486.316
+offset_top = 358.763
+offset_right = 498.684
+offset_bottom = 506.763
+theme_override_font_sizes/font_size = 100
+text = "Apple"
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Sell" type="Button" parent="Buy/MarginContainer/VBoxContainer/Apple"]
+offset_left = -366.0
+offset_top = 563.0
+offset_right = 348.0
+offset_bottom = 730.0
+theme_override_font_sizes/font_size = 100
+text = "Sell: $10"
+
+[node name="Owner" type="Label" parent="Buy/MarginContainer/VBoxContainer/Apple"]
+offset_left = -223.712
+offset_top = 801.969
+offset_right = 288.288
+offset_bottom = 981.969
+theme_override_font_sizes/font_size = 100
+text = "Owned: 0"
+
+[node name="ShopLabel" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 639.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 50
+text = "Plant Shop"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Buy/MarginContainer/VBoxContainer/AppleSapling/Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="Buy/MarginContainer/VBoxContainer/Apple/Sell" to="." method="_on_sell_pressed"]
