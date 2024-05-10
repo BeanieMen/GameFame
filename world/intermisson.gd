@@ -11,4 +11,5 @@ func _ready():
 	treeTimer.start()
 
 func next_round():
-	pass
+	Global.updateDialogue()
+	get_tree().change_scene_to_file("res://world/world.tscn")

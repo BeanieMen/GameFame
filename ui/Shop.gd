@@ -2,11 +2,14 @@ extends CanvasLayer
 
 @onready var sapling: Label = get_node("Buy/MarginContainer/VBoxContainer/AppleSapling/Owner")
 @onready var apple: Label = get_node("Buy/MarginContainer/VBoxContainer/Apple/Owner")
-
+@onready var money = get_node("MoneyLabel")
 func _ready():
 	sapling.text = "Owned: %s" % Global.inventory["AppleSapling"]
 	apple.text = "Owned: %s" % Global.inventory["Apple"]
-	
+
+func _process(delta):
+	money.text = "Money: $%s" % Global.money
+
 func _on_buy_pressed():
 	if Global.money >= 10:
 		Global.money -= 10

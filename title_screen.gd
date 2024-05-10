@@ -5,10 +5,7 @@ extends Node
 @onready var options_container = %OptionsContainer
 @onready var bg_pan = $AnimationPlayer
 
-
 signal level_changed(level_name)
-
-
 
 #Sets up panning background and correct buttons displayed
 func _ready():
